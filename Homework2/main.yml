@@ -1,0 +1,21 @@
+- name: Manage users and groups
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create devops and qa groups
+      group:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - devops
+        - qa
+
+    - name: Create users
+      user:
+        name: "{{ item.name }}"
+        groups: "{{ item.groups }}"
+        state: present
+      loop:
+        - { name: "<kluivert>", groups: "devops" }
+        - { name: "tim", groups: "qa" }
+        - { name: "ann", groups: "qa" }
