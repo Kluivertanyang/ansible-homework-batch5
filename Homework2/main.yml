@@ -19,9 +19,3 @@
         - { name: "kluivert", groups: "devops" }
         - { name: "tim", groups: "qa" }
         - { name: "ann", groups: "qa" }
-    
-    - name: add user Bak
-      user: 
-        name: Bak
-        state: present
-        
