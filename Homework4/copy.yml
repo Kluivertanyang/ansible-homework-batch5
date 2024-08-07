@@ -1,0 +1,8 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: Copy file with owner and permissions
+    ansible.builtin.copy:
+      src: ./Homework4
+      dest: /tmp
+      remote_src: yes

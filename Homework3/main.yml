@@ -1,0 +1,20 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install httpd
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+      notify: restart httpd
+
+  handlers:
+    - name: restart httpd
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
+
+    - name: Install git if httpd is installed
+      ansible.builtin.dnf:
+        name: git
+        state: present
+      when: "'httpd' in ansible_facts.packages"
