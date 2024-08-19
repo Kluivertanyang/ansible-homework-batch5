@@ -1,9 +1,0 @@
-- hosts: all
-  become: yes
-  tasks:
-  - name: create users
-    ansible.builtin.user:
-      name: "{{ item }}"
-      state: present
-    loop:
-      - tim

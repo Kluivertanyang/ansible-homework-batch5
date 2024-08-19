@@ -1,8 +1,18 @@
 - hosts: all
   become: yes
   tasks:
-  - name: Copy file with owner and permissions
-    ansible.builtin.copy:
-      src: ./Homework4
-      dest: /tmp
-      remote_src: yes
+    - name: Copy files from Homework4 folder to remote machine
+      ansible.builtin.copy:
+        src: ./main.yml
+        dest: /nde
+        owner: tim
+        group: devops
+        mode: '0755'
+
+    - name: Copy files from Homework4 folder to remote machine
+      ansible.builtin.copy:
+        src: ./hosts
+        dest: /nde
+        owner: tim
+        group: devops
+        mode: '0755'  
